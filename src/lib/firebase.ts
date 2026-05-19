@@ -1,25 +1,22 @@
-import { initializeApp, FirebaseApp } from 'firebase/app';
-import { getFirestore, Firestore } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
-// ⚠️ Cole aqui os dados do firebaseConfig que o Firebase te deu
-// no momento de registrar o app web.
+// Suas chaves oficiais do Firebase
 const firebaseConfig = {
-  apiKey: 'COLE_AQUI',
-  authDomain: 'COLE_AQUI',
-  projectId: 'COLE_AQUI',
-  storageBucket: 'COLE_AQUI',
-  messagingSenderId: 'COLE_AQUI',
-  appId: 'COLE_AQUI',
+  apiKey: "AIzaSyCk1icjJyyNhfM_Q0yHR5opRnKVTe0GlSI",
+  authDomain: "nuvem-de-autores-ed662.firebaseapp.com",
+  databaseURL: "https://nuvem-de-autores-ed662-default-rtdb.firebaseio.com",
+  projectId: "nuvem-de-autores-ed662",
+  storageBucket: "nuvem-de-autores-ed662.firebasestorage.app",
+  messagingSenderId: "294257887102",
+  appId: "1:294257887102:web:41101b21c57c76c680552f",
+  measurementId: "G-CQ85JPKM6V"
 };
 
-export const isFirebaseConfigured = !firebaseConfig.apiKey.includes('COLE_AQUI');
+// Indica que o sistema está configurado
+export const isFirebaseConfigured = true;
 
-let app: FirebaseApp | null = null;
-let db: Firestore | null = null;
-
-if (isFirebaseConfigured) {
-  app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-}
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export { app, db };

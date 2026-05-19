@@ -6,7 +6,6 @@ import {
   addDoc,
   onSnapshot,
   query,
-  orderBy,
   serverTimestamp,
   Timestamp,
 } from 'firebase/firestore';
@@ -44,10 +43,14 @@ export function useLiteraryEntries() {
 
   // Modo Firebase: escuta mudanças em tempo real
   useEffect(() => {
-    if (!usingRemoteDatabase || !db) return;
+    if (!usingRemoteDatabase) {
+        setAlunos(getLocalEntries());
+        setIsLoading(false);
+        return;
+    }
 
     setIsLoading(true);
-    const q = query(collection(db, COLLECTION_NAME), orderBy('createdAt', 'desc'));
+    const q = query(collection(db!, COLLECTION_NAME));
 
     const unsubscribe = onSnapshot(
       q,

@@ -39,8 +39,10 @@ export default function App() {
             <CounterPill label="leitores" value={stats.leitores} bg="bg-white text-black" />
             <CounterPill label="autores" value={stats.autores} bg="bg-[#ffcf44] text-black" />
             <CounterPill label="livros" value={stats.livros} bg="bg-[#b7e4c7] text-black" />
-            <div className={`neo-pill px-3 py-1 text-[10px] font-bold ${usingRemoteDatabase ? 'bg-[#b7e4c7] text-black' : 'bg-[#ffcf44] text-black'}`}>
-              {usingRemoteDatabase ? '● LIVE' : '● LOCAL'}
+            
+            {/* Status sempre visível */}
+            <div className={`neo-pill px-4 py-1.5 text-[10px] font-black tracking-widest border-2 border-black ${usingRemoteDatabase ? 'bg-[#b7e4c7]' : 'bg-[#ff6b35]'}`}>
+              {usingRemoteDatabase ? '● CONECTADO' : '○ DESCONECTADO'}
             </div>
           </div>
         </div>
